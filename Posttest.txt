@@ -1,0 +1,105 @@
+Nama	: Hartini Indriani
+Kelas	: A 2015
+NIM	: 1515015025
+
+
+1. Jenis - jenis keywoard prolog.
+jawab :
+-Prolog: adalah kependekan dari Programming Logic, yang berarti Bahasa
+	pemrograman logika atau Bahasa pemrograman non-procedural.
+	Penerapannya: pada system pakar, pengolahan Bahasa alami, 
+	robotic, pengenalan pola, belajar, dan game console. 
+-Domain: adalah type data.
+	 Contoh: NamaOrang = symbol
+         Alamat = string
+         Umur = integer
+-string: Rentetan karakter tang diapit tanda kutip ganda seperti 
+	“Jalan Sangkuriang”. Panjang maksimum 255 karakter, sedangkan jika string tersebut dari file, 
+	 atau terkandung dalam program, bisa mencapai 64 Kbyte.
+-Rules: Aturan adalah suatu pernyataan yang menunjukkan 
+	bagaimana fakta-fakta berinteraksi satu dengan yang lain untuk 
+	membentuk suatu kesimpulan
+	Penerapannya: 
+	kakek(sunar,aini) :-
+	ayah(sunar,aini) and
+	ayah(aini,deri).
+-Section Goal:Secara esensial, section goal sama dengan body 
+	 dari sebuah aturan (rule), yaitu sederetan sub-sub goal. 
+	 Perbedaan antara section goal dengan suatu aturan 
+	 adalah setelah kata kunci goal tidak diikuti tanda :- 
+	 dan Visual Prolog secara otomatis mengeksekusi goal 
+	 ketika program dijalankan.
+-Unifikasi (Unification):Pada waktu Visual Prolog mencoba 
+	 untuk mencocokkan suatu panggilan (dari sebuah subgoal) 
+	 ke klausa (pada section clauses), maka proses tersebut 
+	 melibatkan suatu prosedur yang dikenal dengan 
+	 unifikasi (unification), yang mana berusaha untuk mencocokkan 
+	 antara struktur data yang ada di panggilan (subgoal) 
+	 dengan klausa yang diberikan.
+	 Contoh:
+DOMAINS 
+judul,pengarang = symbol 
+halaman = unsigned 
+PREDICATES 
+buku(judul, halaman) 
+nondeterm ditulis_oleh(pengarang, judul) 
+nondeterm buku_tebal(judul) 
+CLAUSES 
+ditulis_oleh(emha, "Markesot Bertutur"). 
+ditulis_oleh(kahlil, "Sang Nabi"). 
+buku("Sang Nabi", 132). 
+buku("Markesot Bertutur", 379).
+buku_tebal(Judul):- 
+ditulis_oleh(_, Judul), 
+buku(Judul, Tebal), 
+Tebal > 300.
+-nondeterm:nondeterm pada section predicates berfungsi 
+	   untuk memberi tahu compiler bahwa predikat 
+   	   tersebut mempunyai lebih dari satu kemungkinan 
+	   jawaban (non-deterministik).
+           Contoh: nondeterm lakukan(pohonchar)
+-Sintak Aturan (Rule Syntax): Rule pada Prolog adalah ketika 
+	    kebenaran sebuah fakta tergantung pada kesukesan 
+	    (kebenaran) dari satu atau lebih fakta yang lain.
+-Compiler Drectives: Visual Prolog mendukung compiler directives 
+	     yang dapat ditambahkan ke badan program untuk
+	     memberitahukan ke komputer bagaimana secara 
+	     spesifik memperlakukan kode-kode waktu di-compile.
+-Section Constants:Konstanta simbolis dapat digunakan di program 
+	      Visual Prolog. Untuk itu sebelumnya harus 
+	      dideklarasikan terlebih dahulu. 
+	      Deklarasi konstanta diakukan pada section constants
+-Section Clauses:Section clauses merupakan section yang paling 
+	      penting pada program Visual Prolog. Pada section 
+	      inilah kita meletakkan fakta dan aturan. 
+	      Ketika mencari jawaban, Visual Prolog akan 
+	      mencari dari bagian paling atas dari section clauses, 
+	      melihat setiap fakta dan aturan untuk mendapat jawaban 
+	      benar, hingga ke bagian paling bawah dari section ini.
+-WRITE( ):Syntax digunakan untuk mencetak variabel string yang 
+	  diapit dengan petik tunggal ( ' ). 
+-NL( ):Atau newline merupakan perintah untuk pindah menuju baris 
+	      yang baru. 
+-READ( ):Syntax ini digunakan untuk memberikan nilai inputan pada
+	 variabel yang diberikan di dalam tanda kurung. 
+-IF Syntax ini digunakan untuk membuat kondisi. 
+-IF ELSE:Syntax ini digunakan untuk membuat kondisi. 
+	      Akan tetapi jika salah satu kondisi 
+	      ( kondisi teratas ) terpenuhi, maka kondisi teratas
+              di eksekusi, kondisi dibawahnya tidak akan tereksekusi. 
+	      Sedangkan Jika terdapat 2 atau lebih IF : 
+	      Jika kondisi teratas terpenuhi akan di eksekusi, 
+	      jika kondisi dibawah juga terpenuhi, maka kondisi 
+	      kedua juga akan dieksekusi tidak berdasarkan 
+	      kondisi diatasnya memenuhi kondisi atau tidak. 
+-IF BERSARANG:Syntax ini digunakan untuk membuat kondisi. 
+	      Akan tetapi jika kondisi (1) teratas terpenuhi, 
+	      maka akan mengeksekusi kondisi (2) didalamnya lagi,
+	      dan jika kondisi didalamnya ke (3) terpenuhi juga, 
+	      maka akan lanjut mengeksekusi, dan jika kondisi (1) 
+	      sudah tidak terpenuhi, maka kondisi (2) dan 
+	      (3)tidak akan dicocokkan kondisinya. 
+
+
+
+
