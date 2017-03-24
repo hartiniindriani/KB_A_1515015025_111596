@@ -1,0 +1,86 @@
+DOMAINS
+ nama,jender,pekerjaan,benda,alasan,zat = symbol %parameter dari nama, jender,pekerjaan,benda,alasan,zat.
+ umur=integer %parameter dari umur 
+
+PREDICATES
+ nondeterm orang(nama, umur, jender, pekerjaan) %predikat orang memiliki argumen berupa nama, umur, jender, perkerjaan  
+ nondeterm selingkuh(nama, nama) %perdikat selingkuh memiliki argumen nama, nama
+ terbunuh_dengan(nama, benda) %predikate terbunuh_dengan memiliki argumen nama, benda
+ terbunuh(nama) %predikate terbunuh memiliki argumen nama
+ nondeterm pembunuh(nama) %predikate pembunuh memiliki argumen nama
+ motif(alasan) %predikat motif memiliki argumen alasan
+ ternodai(nama, zat) %predikat ternodai memiliki argumen nama,zat
+ milik(nama, benda) %predikat milik memiliki argumen nama,benda
+ nondeterm cara_kerja_mirip(benda, benda) %predikat cara_kerja_mirip memiliki argumen benda,benda
+ nondeterm kemungkinan_milik(nama, benda) %predikate kemungkinan_milik memiliki argumen nama,benda
+ nondeterm dicurigai(nama) %predikat dicurigai memiliki argumen nama. 
+ 
+ clauses
+ orang(budi,55,m,tukang_kayu). %budi adalah seorang tukang kayu berumur 55 dan berjender m
+ orang(aldi,25,m,pemain_sepak_bola). %aldi adalah seorang pemain sepak bola berumur 25 dan berjender m 
+ orang(aldi,25,m,tukang_jagal).%aldi adalah seorang tukang jagal berumur 25 dan berjender m
+ orang(joni,25,m,pencopet).%joni adalah seorang pencopet berumur 25 dan berjender m
+ 
+ selingkuh(ina,joni). %ina selingkuh dengan joni
+ selingkuh(ina,budi). %ina selingkuh dengan budi
+ selingkuh(siti,joni). %siti selingkuh dengan joni
+ 
+ terbunuh_dengan(siti,pentungan). %siti terbunuh dengan pentungan
+ terbunuh(siti). %siti terbunuh
+ 
+ motif(uang). %motif uang
+ motif(cemburu). %motif cemburu
+ motif(dendam). %motif dendam
+ 
+ ternodai(budi, darah). %budi ternodai darah
+ ternodai(siti, darah). %siti ternodai darah
+ ternodai(aldi, lumpur). %aldi ternodai lumpur
+ ternodai(joni, coklat). %joni ternodai coklat
+ ternodai(ina, coklat). %ina ternodai coklat
+ 
+ milik(budi,kaki_palsu). %budi memiliki kaki palsu
+ milik(joni,pistol). % joni memiliki pistol 
+ 
+ 
+ cara_kerja_mirip(kaki_palsu, pentungan). %kaki palsu cara kerj mirip dengan pentungan
+ cara_kerja_mirip(balok, pentungan). %balok cara kerja mirip dengan pentungan	
+ cara_kerja_mirip(gunting, pisau). %gunting cara kerja mirip dengan pisau
+ cara_kerja_mirip(sepatu_bola, pentungan). %sepatu bola cara kerja mirip dengan pentungan
+ 	
+	 kemungkinan_milik(X,sepatu_bola):-
+	 orang(X,_,_,pemain_sepak_bola).
+ 	 kemungkinan_milik(X,gunting):-
+	 orang(X,_,_,pekerja_salon).
+	 kemungkinan_milik(X,Benda):-
+	 milik(X,Benda).
+		
+	dicurigai(X):-
+	terbunuh_dengan(siti,Senjata) ,
+	cara_kerja_mirip(Benda,Senjata) ,
+	kemungkinan_milik(X,Benda).
+	
+	
+	dicurigai(X):-
+	motif(cemburu),
+	orang(X,_,m,_),
+	selingkuh(siti,X).
+	
+	
+	dicurigai(X):-
+	motif(cemburu),
+	orang(X,_,f,_),
+	selingkuh(X,Lakilaki),
+	selingkuh(siti,Lakilaki).
+	
+	dicurigai(X):-
+	motif(uang),
+	orang(X,_,_,pencopet).
+	pembunuh(Pembunuh):-
+	orang(Pembunuh,_,_,_),
+	terbunuh(Terbunuh),
+	Terbunuh <> Pembunuh, /* Bukan bunuh diri */
+	dicurigai(Pembunuh),
+	ternodai(Pembunuh,Zat),
+	ternodai(Terbunuh,Zat).
+GOAL
+ pembunuh(X).

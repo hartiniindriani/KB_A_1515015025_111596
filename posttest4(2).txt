@@ -1,0 +1,50 @@
+predicates
+  buy_car(symbol,symbol) - determ (i,o)
+  car(symbol,symbol,integer) - nondeterm (i,o,o)
+  colors(symbol,symbol) - nondeterm (i,i)
+
+clauses
+  buy_car(Model,Color):-
+	car(Model,Color,Price),
+	colors(Color,sexy),!,
+	Price > 25000.
+
+  car(maserati,green,25000).
+  car(corvette,black,24000).
+  car(corvette,red,26000).
+  car(porsche,red,24000).
+
+  colors(red,sexy).
+  colors(black,mean).
+  colors(green,preppy).
+
+goal
+  buy_car(corvette,Y).
+
+penjelasan dari program lacak balik :
+
+- program ini mencari tujuan akhir dari program dengan warna dari sebuah mobil yaitu dengan model mobil corvette yang warnanya ingin diketahui. 
+- Program ini memiliki syarat yaitu mobil tersebut harus memiliki model, warna, dan harga. warna mobil tergolong kategori sexy dengan warna red 
+  dan harganya > 25000 tidak perlu dijalankan karena terdapat fungsi not. sehingga pelacakan hanya sampai pada rules kedua yaitu warna dalam kategori sexy tersebut. 
+- Program tahap awal : 
+		- car(maserati,green,25000).
+
+		  dalam rules awal memenuhi persyaratan yaitu model, warna dan harga tetapi warna yang diminta harus sesuai dengan persyaratan
+		  yaitu dalam kategori sexy, tetapi dalam tahap awal ini bukan dalam kategori sexy melainkan green (sehingga dilakukan lacak balik)
+							
+		- car(corvette,black,24000).
+				
+		  dalam rules kedua ini juga harus memenuhi persyaratan yaitu model, warna dan harga tetapi warna yang diminta harus sesuai dengan persyaratan
+		  yaitu dalam kategori sexy, sedangkan dalam tahap ini kategorinya adalah black bukan kategori sexy yang sesuai dengan persyarata. (dilakukan lacak bali)			
+
+		- car(corvette,red,26000).
+		
+		  dalam rules ketiga ini juga harus memenuhi persyaratan yaitu model, warna dan harga tetapi warna yang diminta harus sesuai dengan persyaratan
+		  yaitu dalam kategori sexy, sedangkan dalam rules ketiga ini memenuhi persyaratan diawal yaitu warna red dalam kategori corvette dan harga > 25000 
+		  dan rules ini  warna red kategori corvette dengan harga 26000. dan rules ini telah sesuai dengan persyaratan pertama.	
+		  (sehingga lakak balik terhenti).
+_disaat rules dengan persyaratan telah terpenuhi dan telah ditemukan goalnya yaitu: buy_car (corvette,Y) = red, setelah goal itu ditemukan
+ maka lacak balik dihentikan.			
+
+
+
