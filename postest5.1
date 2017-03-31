@@ -1,0 +1,15 @@
+DOMAINS	
+orang = orang(nama,alamat)			% orang merupakan parameter jamak yang memiliki argumen nama dan alamat.
+nama = nama(pertama,kedua)			% nama merupakan parameter jamak yang memiliki argumen pertama dan kedua.
+alamat = alamat(jalan,kota_kab,propinsi)	%alamat merupakan objek parameter jamak yang memiliki argumen yaitu jalan,kota_kab,propinsi
+jalan = jalan(nama_jalan,nomor)			%jalan merupakan objek parameter banyak yang memiliki argumen nama_jalan dan nomor.
+kota_kab,propinsi,nama_jalan = string		%String merupakan parameter dari kota_kab,propinsi,nama_jalan.
+pertama,kedua = symbol				%dalam parameter pertama dan kedua terdapat objek jamak nama
+nomor = integer					%parameter nomor menggunakan domain integer
+						
+GOAL		
+	P1 = orang(nama(diena,fatihah), alamat(jalan( "Wijaya Kusuma", 12), "Berbah", "DIY")),	   %berisi tujuan dengan data orang 
+	P1 = orang(nama(_,fatihah),Alamat),							   %data memanggil p1 dan ditambah kedalam alamat.
+	P2 = orang(nama(nur,fatihah),Alamat),							   %data akan memanggil alamat dalam p1 dan ditambah kedalam alamat
+	write("P1=",P1),nl,									   %data dari data p1 Data P1 ini akan menampilkan data dari p1
+	write("P2=",P2),nl.									   %data dari data p2 akan menampilkan data dengan data p2

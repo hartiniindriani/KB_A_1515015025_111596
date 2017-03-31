@@ -1,0 +1,20 @@
+
+
+DOMAINS		
+	benda = buku(judul, pengarang) ;	% parameter benda terdapat domain campuran jamak yaitu buku memiliki argumen judul dan pengarang  
+		kuda(nama) ; 			%kuda memiliki argumen nama
+		kapal ;				%kapal parameter
+		bukubank(saldo)			%buukubank memiliki argumen saldo
+	judul, pengarang, nama = symbol		% parameter judul, pengarang, nama memiliki domain symbol
+	saldo = real				%parameter saldo menggunakan domain real
+PREDICATES	
+	nondeterm milik(nama,benda)	       %menggunakan nondeterm gneral yang memiliki lebih dari satu jawaban
+	
+	
+CLAUSES		
+	milik(erwin, buku("Markesot Bertutur", "Emha Ainun Najib")).	%berisi fakta bahwa erwin memiliki buku markesot dengan pengarang emha ainun najib 
+	milik(erwin, kuda(buraq)). 					% berisi fakta erwin memiliki kuda yaitu buraq
+	milik(erwin, kapal). 						% berisi fakta erwin memiliki kapal
+	milik(erwin, bukubank(1000)). 					%berisi fakta bahwa erwin memiliki bukubank dengan saldo sebesar 1000
+GOAL	/
+	milik(erwin, Benda). %tujuan akhirnya erwin memiliki benda. benda tersebut berbentuk buku, terdapat pengarang,memiliki hewan peliharaan kuda dan memiliki bukubank
